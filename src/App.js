@@ -1,4 +1,4 @@
-import { useContext, useCallback } from 'react';
+import { useContext } from 'react';
 import { Chart } from 'pages';
 import { LoadingIndicator, SelectOptions, VehicleDetails } from 'components';
 import ContextProvider, { Context } from 'Context';
@@ -46,20 +46,14 @@ function App() {
           />
         ) : null}
       </div>
+
       <VehicleDetails hoveredCar={hoveredCar} data={data} />
     </div>
   );
 }
 function RootApp() {
-  const getUsers = useCallback(() => {
-    fetch(`/api/vehicles`)
-      .then((response) => response.json())
-      .then((users) => console.log(users));
-  }, []);
   return (
     <ContextProvider>
-      aaaa
-      {getUsers()}
       <App />;
     </ContextProvider>
   );

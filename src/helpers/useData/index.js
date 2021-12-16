@@ -11,18 +11,19 @@ const useData = () => {
     const response = await fetch(url);
     return await response.text();
   }, []);
-
-  useEffect(() => {
-    //mocking a large database/throatting
-    setTimeout(function () {
-      fetchText(csvUrl).then((text) => {
-        const labels = text.split('\n')[0].split(',');
+  const getUsers = () => {
+    fetch(`/api/vehicles/all`)
+      .then((response) => response.json())
+      .then((users) => {
+        setData(users);
+        let labels = Object.entries(users[0]).map((el) => el[0]);
+        console.log(labels);
         setNumericLabels(labels.slice(0, -2));
-        setStringLabels(labels.slice(-2));
-        setData(csvParse(text));
+        setStringLabels(labels.slice(2));
       });
-    }, 1500);
-  }, [fetchText]);
+  };
+  useEffect(() => getUsers(), []);
+
   return [numericLabels, stringLabels, data];
 };
 
