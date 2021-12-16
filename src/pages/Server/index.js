@@ -5,10 +5,10 @@ const app = express();
 const port = process.env.PORT || 80;
 
 const pool = mysql.createPool({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DB,
+  host: 'us-cdbr-east-05.cleardb.net',
+  user: 'b6731f58f87274',
+  password: '165c6dfc',
+  database: 'heroku_8047aff53b0283e',
 });
 
 app.listen(port, () => {
