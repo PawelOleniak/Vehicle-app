@@ -1,0 +1,14 @@
+pre {
+  font-size: 7em;
+}
+.tick line {
+  stroke: #c0c0bb;
+  opacity: 0.5;
+}
+.tick text {
+  fill: #635f5d;
+}
+.axis-label {
+  font-size: 2.5em;
+  fill: #635f5d;
+}

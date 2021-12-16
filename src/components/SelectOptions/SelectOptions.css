@@ -1,0 +1,15 @@
+.selectContainer {
+  display: flex;
+  width: 50vw;
+  justify-content: space-around;
+  align-items: space-around;
+  flex-direction: column;
+}
+.selectLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.select {
+  width: 140px;
+}

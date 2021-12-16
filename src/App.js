@@ -1,25 +1,68 @@
-import logo from './logo.svg';
+import { useContext, useCallback } from 'react';
+import { Chart } from 'pages';
+import { LoadingIndicator, SelectOptions, VehicleDetails } from 'components';
+import ContextProvider, { Context } from 'Context';
+
+import { useData, capitalizeFirstLetter } from 'helpers';
+
 import './App.css';
 
 function App() {
+  const [numericLabels, stringLabels, data] = useData();
+
+  const options = numericLabels ? numericLabels.map((el) => ({ value: el, label: capitalizeFirstLetter(el) })) : null;
+  const { selectedXValue, selectedYValue, hoveredCar, setHoveredCar, setSelectedXLabel, setSelectedYLabel, darkMode } =
+    useContext(Context);
+
+  const handleChangeX = (selectedOption) => {
+    setSelectedXLabel(selectedOption.value);
+  };
+  const handleChangeY = (selectedOption) => {
+    setSelectedYLabel(selectedOption.value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={darkMode ? 'darkMode' : 'lightMode'}>
+      <div className="mainContainer">
+        {data ? null : <LoadingIndicator />}
+        {data ? (
+          <div className="menuContainer">
+            <SelectOptions
+              selectedYValue={selectedYValue}
+              handleChangeY={handleChangeY}
+              handleChangeX={handleChangeX}
+              selectedXValue={selectedXValue}
+              options={options}
+            />
+          </div>
+        ) : null}
+        {data ? (
+          <Chart
+            data={[numericLabels, stringLabels, data]}
+            selectedXValue={selectedXValue}
+            selectedYValue={selectedYValue}
+            hoveredCar={hoveredCar}
+            setHoveredCar={setHoveredCar}
+          />
+        ) : null}
+      </div>
+      <VehicleDetails hoveredCar={hoveredCar} data={data} />
     </div>
   );
 }
+function RootApp() {
+  const getUsers = useCallback(() => {
+    fetch(`/api/vehicles`)
+      .then((response) => response.json())
+      .then((users) => console.log(users));
+  }, []);
+  return (
+    <ContextProvider>
+      aaaa
+      {getUsers()}
+      <App />;
+    </ContextProvider>
+  );
+}
 
-export default App;
+export default RootApp;
