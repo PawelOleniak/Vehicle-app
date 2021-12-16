@@ -17,7 +17,6 @@ const useData = () => {
       .then((users) => {
         setData(users);
         let labels = Object.entries(users[0]).map((el) => el[0]);
-        console.log(labels);
         setNumericLabels(labels.slice(0, -2));
         setStringLabels(labels.slice(2));
       });
