@@ -25,17 +25,8 @@
     "webpack": "4.44.2"
   },
   "scripts": {
-<<<<<<< HEAD
-    "start":"nodemon -r dotenv/config ./src/Server.js",
+    "start":"node ./src/Server.js",
     "build": " npm install && npm run build"
-=======
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server":"nodemon -r dotenv/config ./src/Server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "client": "react-scripts start"
->>>>>>> c47a94c508433e598332b56a6886087dcbb60b9d
   },
   "eslintConfig": {
     "extends": [
