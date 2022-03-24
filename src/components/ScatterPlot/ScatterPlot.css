@@ -1,14 +1,9 @@
 .mark {
   fill: #137b80;
 }
+.darkMark {
+  fill: #00628e;
+}
 .selectedMark {
   fill: #d1d409;
-}
-.overlay {
-  opacity: 0.2;
-  background-color: red;
-  position: absolute;
-}
-.focus {
-  display: none;
 }

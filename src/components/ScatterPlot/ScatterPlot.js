@@ -12,7 +12,7 @@ const ScatterPlot = ({ data, height, width, xValue, yValue, xScale, yScale, sele
   const xAxisTickFormat = (tickValue) => siFormat(tickValue);
   const [isFreezed, setIsFreezed] = useState(false);
 
-  const { hoveredCar, setHoveredCar } = useContext(Context);
+  const { hoveredCar, setHoveredCar, darkMode } = useContext(Context);
 
   return (
     <>
@@ -29,7 +29,6 @@ const ScatterPlot = ({ data, height, width, xValue, yValue, xScale, yScale, sele
       </text>
       <AxisLeft yScale={yScale} innerWidth={width} tickOffset={10} />
       <CircleMark
-        className="mark"
         data={data}
         xScale={xScale}
         yScale={yScale}

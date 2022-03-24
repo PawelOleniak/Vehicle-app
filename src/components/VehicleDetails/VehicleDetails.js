@@ -12,9 +12,7 @@ const VehicleDetails = ({ hoveredCar: vehicle, data }) => {
         <div>
           <div style={{ display: `flex`, justifyContent: `space-between` }}>
             <h4>Selected Vehicle</h4>
-            <div>
-              <button onClick={() => setAdditionalFilter(null)}>Reset filter</button>
-            </div>
+            <p>To freeze chart click on car-circle</p>
           </div>
 
           <div className="details">

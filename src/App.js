@@ -1,18 +1,29 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Chart } from 'pages';
-import { LoadingIndicator, SelectOptions, VehicleDetails } from 'components';
+import { AddVehicleForm, LoadingIndicator, SelectOptions, VehicleDetails } from 'components';
 import ContextProvider, { Context } from 'Context';
+import { HiSun, HiMoon } from 'react-icons/hi';
 
 import { useData, capitalizeFirstLetter } from 'helpers';
 
 import './App.css';
+import Modal from 'components/Modal/Modal';
 
 function App() {
   const [numericLabels, stringLabels, data] = useData();
 
   const options = numericLabels ? numericLabels.map((el) => ({ value: el, label: capitalizeFirstLetter(el) })) : null;
-  const { selectedXValue, selectedYValue, hoveredCar, setHoveredCar, setSelectedXLabel, setSelectedYLabel, darkMode } =
-    useContext(Context);
+  const {
+    selectedXValue,
+    selectedYValue,
+    hoveredCar,
+    setHoveredCar,
+    setSelectedXLabel,
+    setSelectedYLabel,
+    darkMode,
+    handleSetDarkMode,
+    isBigScreen,
+  } = useContext(Context);
 
   const handleChangeX = (selectedOption) => {
     setSelectedXLabel(selectedOption.value);
@@ -21,10 +32,19 @@ function App() {
     setSelectedYLabel(selectedOption.value);
   };
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
   return (
-    <div className={darkMode ? 'darkMode' : 'lightMode'}>
-      <div className="mainContainer">
-        {data ? null : <LoadingIndicator />}
+    <div>
+      <div className={darkMode ? 'darkMode' : 'lightMode'} />
+      <div className="switchContainer" onClick={handleSetDarkMode}>
+        {darkMode ? <HiMoon size={50} className={'icon'} /> : <HiSun size={50} className={'icon'} />}
+      </div>
+      <div className={'mainContainer ' + (isBigScreen ? '' : ' mainContainerMobile')}>
+        {data ? null : (
+          <div className="loadingIndicatorWrapper">
+            <LoadingIndicator />
+          </div>
+        )}
         {data ? (
           <div className="menuContainer">
             <SelectOptions
@@ -34,6 +54,9 @@ function App() {
               selectedXValue={selectedXValue}
               options={options}
             />
+            <button className="button" onClick={() => setIsFormOpen(!isFormOpen)}>
+              Add a vehicle
+            </button>
           </div>
         ) : null}
         {data ? (
@@ -48,6 +71,12 @@ function App() {
       </div>
 
       <VehicleDetails hoveredCar={hoveredCar} data={data} />
+
+      {isFormOpen ? (
+        <Modal handleClose={setIsFormOpen}>
+          <AddVehicleForm numericLabels={numericLabels} stringLabels={stringLabels} lastIndex={data.length} />
+        </Modal>
+      ) : null}
     </div>
   );
 }

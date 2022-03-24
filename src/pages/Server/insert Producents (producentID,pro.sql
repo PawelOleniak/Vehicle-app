@@ -1,1 +1,0 @@
-select mpg,cylinders,displacement,horsepower,weight,acceleration,year,countryName,name from vehicles,countries where vehicles.origin=countries.countryId;

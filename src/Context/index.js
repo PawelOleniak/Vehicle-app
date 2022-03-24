@@ -1,10 +1,11 @@
 import { createContext, useState, useEffect } from 'react';
 import { initialX, initialY } from 'Constants';
+import { useMediaQuery } from 'react-responsive';
 export const Context = createContext();
 
 const Provider = ({ children }) => {
   const [darkMode, setDarkMode] = useState();
-
+  const isBigScreen = useMediaQuery({ minWidth: 1000 });
   const [selectedXValue, setSelectedXLabel] = useState();
   const [selectedYValue, setSelectedYLabel] = useState();
   const [hoveredCar, setHoveredCar] = useState(null);
@@ -13,7 +14,7 @@ const Provider = ({ children }) => {
   useEffect(() => {
     setSelectedXLabel(initialX);
     setSelectedYLabel(initialY);
-    setDarkMode(true);
+    setDarkMode(false);
     setHoveredCar(null);
     setAdditionalFilter(null);
   }, []);
@@ -33,6 +34,7 @@ const Provider = ({ children }) => {
     setAdditionalFilter,
     darkMode,
     handleSetDarkMode,
+    isBigScreen,
   };
   return <Context.Provider value={ContextValue}>{children}</Context.Provider>;
 };

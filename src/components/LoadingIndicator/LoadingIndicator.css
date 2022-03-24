@@ -9,9 +9,9 @@
 }
 .loading > div {
   display: inline-block;
-  width: 100px;
-  height: 100px;
-  margin: 8px;
+  width: 200px;
+  height: 200px;
+  margin: 16px;
   border-radius: 50%;
   background: rgb(84, 111, 153);
   animation: loading 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;

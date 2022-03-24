@@ -1,8 +1,5 @@
 .selectContainer {
   display: flex;
-  width: 50vw;
-  justify-content: space-around;
-  align-items: space-around;
   flex-direction: column;
 }
 .selectLabel {
