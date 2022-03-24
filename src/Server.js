@@ -3,7 +3,6 @@ const mysql = require('mysql');
 
 const app = express();
 const port = process.env.PORT || 5000;
-console.log(`App1 server now listening to port ${port}`);
 const pool = mysql.createPool({
   host: 'us-cdbr-east-05.cleardb.net',
   user: 'b6731f58f87274',
