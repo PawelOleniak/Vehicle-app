@@ -21,17 +21,16 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "^4.0.3",
     "react-select": "^5.2.1",
-    "serve": "^13.0.2",
     "web-vitals": "^1.1.2",
     "webpack": "4.44.2"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server":"nodemon -r dotenv/config ./src/Server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "client": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [
