@@ -25,7 +25,7 @@
     "webpack": "4.44.2"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node Server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
