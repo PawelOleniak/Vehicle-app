@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const pool = mysql.createPool({
   host: 'us-cdbr-east-05.cleardb.net',
   user: 'b6731f58f87274',
