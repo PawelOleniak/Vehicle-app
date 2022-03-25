@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
+const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -13,7 +14,7 @@ const pool = mysql.createPool({
 app.listen(port, () => {
   console.log(`App server now listening to port ${port}`);
 });
-
+app.use(express.static(path.resolve(__dirname, '../build')));
 app.get('/api/vehicles/all', (req, res) => {
   pool.query(
     `select mpg,cylinders,displacement,horsepower,weight,acceleration,year,countryName,name
@@ -46,4 +47,8 @@ app.get('/api/vehicles/add', (req, res) => {
       }
     }
   );
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
 });
