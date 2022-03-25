@@ -1,14 +1,19 @@
-pre {
-  font-size: 7em;
-}
-.tick line {
+line {
   stroke: #c0c0bb;
   opacity: 0.5;
 }
 .tick text {
   fill: #635f5d;
 }
+.tick-mobile text {
+  font-size: 0.8em;
+  fill: #635f5d;
+}
 .axis-label {
   font-size: 2.5em;
+  fill: #635f5d;
+}
+.axis-label-mobile {
+  font-size: 1.5em;
   fill: #635f5d;
 }

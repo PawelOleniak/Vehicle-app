@@ -6,6 +6,7 @@ export const Context = createContext();
 const Provider = ({ children }) => {
   const [darkMode, setDarkMode] = useState();
   const isBigScreen = useMediaQuery({ minWidth: 1000 });
+  const isSmallScreen = useMediaQuery({ maxWidth: 500 });
   const [selectedXValue, setSelectedXLabel] = useState();
   const [selectedYValue, setSelectedYLabel] = useState();
   const [hoveredCar, setHoveredCar] = useState(null);
@@ -35,6 +36,7 @@ const Provider = ({ children }) => {
     darkMode,
     handleSetDarkMode,
     isBigScreen,
+    isSmallScreen,
   };
   return <Context.Provider value={ContextValue}>{children}</Context.Provider>;
 };

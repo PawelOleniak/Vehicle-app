@@ -3,11 +3,14 @@ import { Context } from 'Context';
 import { capitalizeFirstLetter } from 'helpers';
 import './VehicleDetails.css';
 const VehicleDetails = ({ hoveredCar: vehicle, data }) => {
-  const { additionalFilter, setAdditionalFilter, darkMode } = useContext(Context);
+  const { additionalFilter, setAdditionalFilter, darkMode, isSmallScreen, isBigScreen } = useContext(Context);
   const isselected = (value) => additionalFilter && value === additionalFilter[1];
-
+  const containerClasses =
+    'detailsContainer ' +
+    (darkMode ? 'dark ' : 'light ') +
+    (isBigScreen ? '' : isSmallScreen ? 'smallContainer' : 'normalContainer');
   return (
-    <div className={'detailsContainer ' + (darkMode ? 'dark' : 'light')}>
+    <div className={containerClasses}>
       {vehicle !== null ? (
         <div>
           <div style={{ display: `flex`, justifyContent: `space-between` }}>
@@ -15,7 +18,7 @@ const VehicleDetails = ({ hoveredCar: vehicle, data }) => {
             <p>To freeze chart click on car-circle</p>
           </div>
 
-          <div className="details">
+          <div className={isSmallScreen ? 'details-small' : 'details'}>
             {Object.entries(data[vehicle])
               .reverse()
               .map(([key, value]) => (

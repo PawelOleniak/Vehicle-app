@@ -3,7 +3,15 @@ import { ScatterPlot } from 'components';
 import { scaleLinear, extent } from 'd3';
 import { innerWidth, innerHeight, xAxisPlotPadding, yAxisPlotPadding, xMargin, yMargin } from 'Constants';
 
-const Chart = ({ data: [numericLabels, stringLabels, data], selectedXValue, selectedYValue }) => {
+import './Chart.css';
+
+const Chart = ({
+  data: [numericLabels, stringLabels, data],
+  selectedXValue,
+  selectedYValue,
+  isBigScreen,
+  isSmallScreen,
+}) => {
   const xValue = (d) => +d[selectedXValue];
   const yValue = (d) => +d[selectedYValue];
 
@@ -18,9 +26,9 @@ const Chart = ({ data: [numericLabels, stringLabels, data], selectedXValue, sele
     .nice();
 
   return (
-    <div className="Container">
+    <div className={isBigScreen ? '' : isSmallScreen ? 'container-small' : 'container-medium'}>
       <svg width={innerWidth + 2 * xMargin} height={innerHeight + 2 * yMargin}>
-        <g transform={`translate(${xMargin},${yMargin})`}>
+        <g transform={`translate(${xMargin * 1.2},${yMargin})`}>
           {data ? (
             <ScatterPlot
               numericLabels={numericLabels}

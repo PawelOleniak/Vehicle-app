@@ -22,7 +22,7 @@ const CircleMark = ({
       display={filter && el[filter[0]] !== filter[1] ? 'none' : 'unset'}
       r={index === hoveredCarIndex ? circleRadius + 1 : circleRadius}
       onMouseOver={() => setHoveredCar(index)}
-      touchmove={() => setHoveredCar(index)}
+      onTouchMove={() => setHoveredCar(index)}
       onClick={freeze}
     />
   ));

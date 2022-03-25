@@ -2,10 +2,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+.details-small {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
 .detail {
   display: flex;
   justify-content: space-between;
-  margin: 0 8px;
+  margin: 0 5px;
 }
 .detailsContainer {
   border: solid gray 1px;
@@ -15,18 +19,25 @@
   padding: 8px;
   background-color: ivory;
 }
+.normalContainer {
+  font-size: 12px;
+}
+.smallContainer {
+  font-size: 9px;
+}
 .dark {
   background-color: rgba(255, 255, 200, 0.6);
 }
 .addFilterButton {
   background-color: rgb(110, 250, 110);
-  border-radius: 10px;
-  width: fit-content;
-  height: fit-content;
 }
 .removeFilterButton {
   background-color: rgb(250, 110, 110);
-  border-radius: 10px;
-  width: fit-content;
-  height: fit-content;
+}
+button.addFilterButton,
+button.removeFilterButton {
+  border-radius: 9px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
 }

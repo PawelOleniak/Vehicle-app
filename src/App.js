@@ -4,10 +4,11 @@ import { AddVehicleForm, LoadingIndicator, SelectOptions, VehicleDetails } from 
 import ContextProvider, { Context } from 'Context';
 import { HiSun, HiMoon } from 'react-icons/hi';
 
-import { useData, capitalizeFirstLetter } from 'helpers';
+import { capitalizeFirstLetter } from 'helpers';
 
 import './App.css';
 import Modal from 'components/Modal/Modal';
+import useData from 'hooks/useData';
 
 function App() {
   const [numericLabels, stringLabels, data] = useData();
@@ -23,6 +24,7 @@ function App() {
     darkMode,
     handleSetDarkMode,
     isBigScreen,
+    isSmallScreen,
   } = useContext(Context);
 
   const handleChangeX = (selectedOption) => {
@@ -33,6 +35,7 @@ function App() {
   };
 
   const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <div>
       <div className={darkMode ? 'darkMode' : 'lightMode'} />
@@ -66,6 +69,8 @@ function App() {
             selectedYValue={selectedYValue}
             hoveredCar={hoveredCar}
             setHoveredCar={setHoveredCar}
+            isBigScreen={isBigScreen}
+            isSmallScreen={isSmallScreen}
           />
         ) : null}
       </div>

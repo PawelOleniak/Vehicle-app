@@ -1,0 +1,14 @@
+.container-medium svg {
+  transform: scale(0.7) translateY(-170px);
+}
+.container-medium {
+  height: 350px;
+  display: flex;
+}
+.container-small svg {
+  transform: scale(0.45) translateY(-370px);
+}
+.container-small {
+  height: 220px;
+  display: flex;
+}

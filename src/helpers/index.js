@@ -1,2 +1,3 @@
-export { default as useData } from './useData';
-export { default as capitalizeFirstLetter } from './capitalizeFirstLetter';
+export function capitalizeFirstLetter(string) {
+  return string[0].toUpperCase() + string.slice(1);
+}
