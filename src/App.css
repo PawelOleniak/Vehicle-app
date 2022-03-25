@@ -53,3 +53,6 @@
   cursor: pointer;
   margin-top: 10px;
 }
+.appWrapper {
+  overflow-x: hidden;
+}

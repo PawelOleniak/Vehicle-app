@@ -37,7 +37,7 @@ function App() {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
-    <div>
+    <div className="appWrapper">
       <div className={darkMode ? 'darkMode' : 'lightMode'} />
       <div className="switchContainer" onClick={handleSetDarkMode}>
         {darkMode ? <HiMoon size={50} className={'icon'} /> : <HiSun size={50} className={'icon'} />}
